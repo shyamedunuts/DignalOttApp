@@ -127,7 +127,7 @@ class MovieActivity : AppCompatActivity() , PagingListener {
             viewModel.loadSecond(this)
             viewModel.moviesList.value?.let { adapter.updateList(it) }
         }
-        if(!viewModel.thirdLoaded)
+        else if(!viewModel.thirdLoaded)
         {
             viewModel.loadThird(this)
             viewModel.moviesList.value?.let { adapter.updateList(it) }
