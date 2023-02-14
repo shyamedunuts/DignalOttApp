@@ -64,7 +64,11 @@ class MovieActivity : AppCompatActivity() , PagingListener {
         adapter= MovieListAdapter(null,this,this)
         viewBinding.idListRecycler.adapter=adapter
         viewModel=ViewModelProvider(this).get(MainViewModel::class.java)
-        viewModel.getMovieList(baseContext)
+        if(viewModel.moviesList.value!= Movies.emptyMovies)
+        {
+            viewModel.getMovieList(baseContext)
+        }
+
     }
 
 
@@ -127,7 +131,7 @@ class MovieActivity : AppCompatActivity() , PagingListener {
             viewModel.loadSecond(this)
             viewModel.moviesList.value?.let { adapter.updateList(it) }
         }
-        else if(!viewModel.thirdLoaded)
+        if(!viewModel.thirdLoaded)
         {
             viewModel.loadThird(this)
             viewModel.moviesList.value?.let { adapter.updateList(it) }
