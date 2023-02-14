@@ -9,13 +9,13 @@ android {
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.cheezycode.daggermvvm"
+        applicationId "com.dignalott"
         minSdk 21
         targetSdk 33
         versionCode 1
         versionName "1.0"
 
-        testInstrumentationRunner "com.cheezycode.daggermvvm.CustomRunner"
+        testInstrumentationRunner "com.diagnalott"
     }
 
     buildTypes {

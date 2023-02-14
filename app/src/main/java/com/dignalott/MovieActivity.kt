@@ -1,24 +1,19 @@
 package com.dignalott
 
 import android.content.res.Configuration.ORIENTATION_LANDSCAPE
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.SearchView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.dignalott.adapter.MovieListAdapter
 import com.dignalott.adapter.PagingListener
 import com.dignalott.databinding.ActivityMainBinding
 import com.dignalott.models.Content
 import com.dignalott.models.Movies
-import com.dignalott.util.EndlessRecyclerViewScrollListener
 import com.dignalott.viewmodels.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -30,7 +25,6 @@ class MovieActivity : AppCompatActivity() , PagingListener {
     private lateinit var viewModel :  MainViewModel
     private lateinit var adapter : MovieListAdapter
     private  var searchMovies: Movies = Movies.emptyMovies
-    private lateinit var portraitScrollListener:EndlessRecyclerViewScrollListener
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,17 +58,6 @@ class MovieActivity : AppCompatActivity() , PagingListener {
             adapter.notifyDataSetChanged()
         }
 
-        portraitScrollListener=object : EndlessRecyclerViewScrollListener(viewBinding.idListRecycler.layoutManager as GridLayoutManager) {
-            override fun onLoadMore(page: Int, totalItemsCount: Int, view: RecyclerView?) {
-
-                loadNextDataFromApi(page)
-            }
-        }
-
-
-        viewBinding.idListRecycler.addOnScrollListener(portraitScrollListener)
-
-
     }
 
     private fun initViews() {
@@ -84,9 +67,7 @@ class MovieActivity : AppCompatActivity() , PagingListener {
         viewModel.getMovieList(baseContext)
     }
 
-    fun loadNextDataFromApi(offset: Int) {
-        Toast.makeText(this@MovieActivity,"$offset",Toast.LENGTH_LONG).show()
-    }
+
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.search_menu,menu)
