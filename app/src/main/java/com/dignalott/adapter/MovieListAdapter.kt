@@ -37,14 +37,11 @@ class MovieListAdapter(val movieList: Movies?,val context: Context,val listener:
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.movieName.text= movies!![position].name
 
-
-
         Glide.with(context)
             .load(Uri.parse("file:///android_asset/${movies!![position].`poster-image`}"))
             .into(holder.movieImage)
         if(position+1==movies?.size)
         {
-            Toast.makeText(context,"${(movies as ArrayList).size}",Toast.LENGTH_SHORT).show()
             listener.startPaging()
         }
     }
@@ -60,6 +57,7 @@ class MovieListAdapter(val movieList: Movies?,val context: Context,val listener:
 
 
 }
+//
 interface PagingListener
 {
     fun startPaging()

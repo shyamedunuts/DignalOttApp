@@ -41,6 +41,8 @@ class MovieActivity : AppCompatActivity() , PagingListener {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title="Romantic Comedy"
 
+
+
         initViews()
 
 //        Checking the orientation

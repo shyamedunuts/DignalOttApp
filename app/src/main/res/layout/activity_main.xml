@@ -6,8 +6,6 @@
     android:background="#000000"
     xmlns:tools="http://schemas.android.com/tools">
 
-
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/id_list_recycler"
         tools:listitem="@layout/item_card"

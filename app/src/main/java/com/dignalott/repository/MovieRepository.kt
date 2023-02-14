@@ -9,6 +9,8 @@ import java.nio.charset.Charset
 
 class MovieRepository {
 
+
+//    Creating Movies Object from the Json String
      fun  getMoviesList(context: Context,fileName:String): Movies?
     {
         try {
@@ -20,12 +22,13 @@ class MovieRepository {
         }
          return null
     }
+//    Fetching Data From Json String
     fun getJSONFromAssets(context : Context,fileName:String): String? {
 
         var json: String? = null
         val charset: Charset = Charsets.UTF_8
         try {
-            val myUsersJSONFile = context.assets.open("CONTENTLISTINGPAGE-PAGE1.json")
+            val myUsersJSONFile = context.assets.open(fileName)
             val size = myUsersJSONFile.available()
             val buffer = ByteArray(size)
             myUsersJSONFile.read(buffer)
